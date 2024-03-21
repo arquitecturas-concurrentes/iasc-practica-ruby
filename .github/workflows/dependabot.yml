@@ -1,11 +1,12 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+# `dependabot.yml` file with customized Bundler configuration
+# In this example, the name of the group is `dev-dependencies`, and
+# only the `patterns` and `exclude-patterns` options are used.
+# Grouping rules apply to version updates only.
 
 version: 2
 updates:
-  - package-ecosystem: "bundler" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  # Keep bundler dependencies up to date
+  - package-ecosystem: "bundler"
+    directory: "/"
     schedule:
       interval: "weekly"
