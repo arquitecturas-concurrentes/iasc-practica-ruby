@@ -1,0 +1,41 @@
+version: '3.8'
+
+volumes:
+  scripts:
+  practicavol:
+
+networks:
+   back:
+    driver: bridge
+
+services:
+  alpine-ab:
+    container_name: alpine-ab
+    build:
+      context: ./ab_image
+      dockerfile: ./Dockerfile
+    image: practica-ruby-ab:latest
+    volumes:
+      - type: volume
+        source: scripts
+        target: /scripts
+    networks:
+      - back
+    tty: true
+  practica-ruby:
+    container_name: practica-ruby
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: practica-ruby:latest
+    tty: true
+    volumes:
+      - type: volume
+        source: practicavol
+        target: /app
+    networks:
+     - back
+    ports: 
+      - 9292:9292
+    depends_on:
+      - alpine-ab

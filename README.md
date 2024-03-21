@@ -13,7 +13,7 @@ A Continuacion de detallan los pasos para instalar Ruby y JRuby.
 
 ### Docker (Opcional)
 
-> Nota: Solo tomen en cuenta esta seccion si han usado y conocen Docker.
+> Nota: Solo tomen en cuenta esta seccion si han usado y conocen Docker. Actualmente se tiene un docker compose con otra imagen para tirar carga y usa otras cosas como volumenes para facilitar la edicion y no tener que volver a buildear la imagen o hacerlo desde la linea de comando al crear el contenedor
 
 La imagen tiene todas las dependencias instaladas junto con htop y ab (apache2-utils).
 El comando por defecto del container `/bin/bash -l`
@@ -22,7 +22,7 @@ El comando por defecto del container `/bin/bash -l`
 # Armar la imagen con tag rvm
 docker build . -t iasc-practica-ruby
 # Instanciar la imagen en un container con nombre rvm1
-docker run --name iasc-practica-ruby-cont -it iasc-practica-ruby
+docker run --rm --name iasc-practica-ruby-cont -it iasc-practica-ruby -p 9292:9292
 # Loguearse al container en otra terminal
 docker exec -it iasc-practica-ruby-cont bash -l
 # Para ver las versiones de ruby instaladas
@@ -39,10 +39,42 @@ ab -c 10 -n 100 localhost:9292/io_bound
 
 > La imagen de docker tambien expone su puerto 9292, para que pueda correrse ab desde afuera.
 
-Tambien pueden bajarse la imagen pre-buildeada de esta practica 
+### Docker compose (Opcional)
+
+Tambien puede usarse la configuracion de docker compose que viene con este repositorio. Esto permite que se pueda levantar la imagen de la practica, junto con otra imagen que viene con apache ab preinstalado.
+
+para esto basta con levantar docker compose
 
 ```bash
-docker pull ghcr.io/arquitecturas-concurrentes/iasc-practica-ruby:main
+docker-compose up
+```
+
+Debido a que en la practica estaremos levantando seguido el servidor, cambiando los argumentos o el codigo, el directorio donde se monta la aplicacion es un volumen, con lo cual los cambios hechos se persisten hasta que se vuelva a recrear el volumen.
+
+Para entrar al contenedor de la aplicacion basta con hacer
+
+```bash
+docker exec -it practica-ruby /bin/bash -l
+```
+
+de ahi se puede levantar normalmente
+
+```bash
+bundle exec puma -t 4:8 -w 2
+```
+
+La otra imagen, llamada `alpine-ab`, es una imagen basica para levantar carga, se puede entrar a este contenedor para tirar carga mediante el siguiente comando:
+
+```bash
+docker exec -it alpine-ab /bin/bash
+```
+
+de ahi, existe la carpeta `/scripts`, que posee dos scripts para hacer los distintos tipos de request. En caso de que se quieran modificar, se puede usar vi.
+
+para ejecutar un script basta con hacer:
+
+```bash
+./scripts/ab_io_requests.bash
 ```
 
 ### Usando la imagen de lubuntu (Virtualbox)
@@ -64,8 +96,8 @@ echo "source $HOME/.rvm/scripts/rvm" >> ~/.bash_profile
 Y luego, instalar Ruby y [bundler](http://bundler.io/):
 
 ```bash
-rvm install 3.2.2
-rvm use 3.2.2
+rvm install 3.3.0
+rvm use 3.3.0
 gem install bundler
 ```
 
@@ -88,6 +120,27 @@ bundle install
 Esto instalará las dependencias y de aqui en más se puede proceder con la primera parte de la práctica.
 
 Ante cualquier duda referirse a la documentacion de la [página](https://rvm.io/rvm/install)
+
+
+### Htop
+
+Esta herramienta puede ser util para responder varias de las preguntas de la consigna. Recomendamos fuertemente leer la consigna primero, levantar el servidor, ver de que funcione correctamente y puedan hacerse requests a este; antes de leer en profundidad esta seccion.
+
+#### ¿Qué puedo hacer desde htop?
+
+Se puede ver con htop los procesos levantados y los recursos actuales. En este caso puede servir para ver la carga de los threads que se hayan levantado desde el servidor.
+
+> htop esta disponible tanto en la imagen de docker de la aplicacion, como en la maquina virtual.
+
+Se puede hacer un filter con `F4` y filtrar por la palabra `puma`
+
+![](./img/htop_filter.png)
+
+Despues de eso se puede ver los threads de manera de lista o arbol, con `F5`
+
+![](./img/htop_tree.png)
+
+En caso de que surjan dudas de puma, consultar con la seccion de FAQ o ver la documentacion de puma.
 
 ## Consigna
 
