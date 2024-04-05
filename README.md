@@ -183,8 +183,6 @@ A partir de las mediciones y comparaciones en cada escenario, deberían poder re
 - Bajo N procesos (modo clustered), si la cantidad de procesos aumenta por encima de la cantidad de cores de la máquina, ¿mejora la performance de una tarea cpu bound?
 - Los Green threads de Ruby, ¿son realmente green threads? (Tip: analizar mediante `htop` si el sistema operativo los ve)
 
-Nota: Con la ruta de `io_bound`, se puede variar el tamaño del archivo que se lee, a fin de poder sacar una conclusion mas clara
-
 ### FAQ
 
 #### ¿Cómo lanzar el servidor?
