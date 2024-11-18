@@ -19,9 +19,10 @@ GEM
     drb (2.2.1)
     i18n (1.14.4)
       concurrent-ruby (~> 1.0)
+    logger (1.6.1)
     method_source (1.0.0)
     minitest (5.22.3)
-    mustermann (2.0.2)
+    mustermann (3.0.3)
       ruby2_keywords (~> 0.0.1)
     mutex_m (0.2.0)
     nio4r (2.7.0)
@@ -33,17 +34,23 @@ GEM
       slop (~> 3.0)
     puma (6.4.2)
       nio4r (~> 2.0)
-    rack (2.2.8.1)
-    rack-protection (2.2.4)
-      rack
+    rack (3.1.8)
+    rack-protection (4.1.0)
+      base64 (>= 0.1.0)
+      logger (>= 1.6.0)
+      rack (>= 3.0.0, < 4)
+    rack-session (2.0.0)
+      rack (>= 3.0.0)
     ruby2_keywords (0.0.5)
-    sinatra (2.2.4)
-      mustermann (~> 2.0)
-      rack (~> 2.2)
-      rack-protection (= 2.2.4)
+    sinatra (4.1.0)
+      logger (>= 1.6.0)
+      mustermann (~> 3.0)
+      rack (>= 3.0.0, < 4)
+      rack-protection (= 4.1.0)
+      rack-session (>= 2.0.0, < 3)
       tilt (~> 2.0)
     slop (3.6.0)
-    tilt (2.3.0)
+    tilt (2.4.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
 
@@ -56,7 +63,7 @@ DEPENDENCIES
   pry
   pry-remote
   puma (>= 5.6.4)
-  sinatra (~> 2.2.0)
+  sinatra (~> 4.1.0)
 
 BUNDLED WITH
    2.5.3
