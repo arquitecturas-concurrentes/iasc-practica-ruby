@@ -210,6 +210,15 @@ El repo ya cuenta con dos scripts que utilizan `ab`: `ab_cpu_requests.bash` y `a
 
 Siéntanse libres de modificar estos scripts en base a las pruebas que quieran realizar.
 
+#### ¿Qué pasa si el endpoint de IO no encuentra el archivo?
+
+Hay que crear un archivo, hay un script de bash que genera el archivo para esto. 
+
+El nombre del script es `generate_file.bash`
+
+solo hace falta correrlo una vez para generar un archivo que usara ese endpoint.
+
+
 #### ¿Cómo controlar la cantidad de hilos y procesos
 
 El comando `puma` acepta dos parámetros para controlarlos `-t` y `-w`:
