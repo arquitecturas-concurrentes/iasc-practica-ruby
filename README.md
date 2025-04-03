@@ -96,8 +96,8 @@ echo "source $HOME/.rvm/scripts/rvm" >> ~/.bash_profile
 Y luego, instalar Ruby y [bundler](http://bundler.io/):
 
 ```bash
-rvm install 3.3.0
-rvm use 3.3.0
+rvm install 3.3.7
+rvm use 3.3.7
 gem install bundler
 ```
 
@@ -209,6 +209,15 @@ El repo ya cuenta con dos scripts que utilizan `ab`: `ab_cpu_requests.bash` y `a
 - `-c`: cantidad de requests concurrentes
 
 Siéntanse libres de modificar estos scripts en base a las pruebas que quieran realizar.
+
+#### ¿Qué pasa si el endpoint de IO no encuentra el archivo?
+
+Hay que crear un archivo, hay un script de bash que genera el archivo para esto. 
+
+El nombre del script es `generate_file.bash`
+
+solo hace falta correrlo una vez para generar un archivo que usara ese endpoint.
+
 
 #### ¿Cómo controlar la cantidad de hilos y procesos
 
