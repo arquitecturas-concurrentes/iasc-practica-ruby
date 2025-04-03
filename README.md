@@ -96,8 +96,8 @@ echo "source $HOME/.rvm/scripts/rvm" >> ~/.bash_profile
 Y luego, instalar Ruby y [bundler](http://bundler.io/):
 
 ```bash
-rvm install 3.3.0
-rvm use 3.3.0
+rvm install 3.3.7
+rvm use 3.3.7
 gem install bundler
 ```
 
