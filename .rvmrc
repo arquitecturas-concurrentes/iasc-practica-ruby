@@ -1,2 +1,2 @@
 rvm_trust_rvmrcs_flag=1
-rvm use ruby-3.3.0@iasc-practica-ruby --create
+rvm use ruby-3.4.0@iasc-practica-ruby --create

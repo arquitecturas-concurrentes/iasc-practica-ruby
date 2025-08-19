@@ -5,7 +5,7 @@
 - Comparar comportamiento de Puma en sus múltiples modos
 - Comparar modelo de procesos y threads
 
-Durante esta práctica estaremos utilizando Ruby 2.7.2 y JRuby 9.2.8.0.
+Durante esta práctica estaremos utilizando Ruby 3.4.0 y JRuby 10.0.2.0.
 
 ## Instalacion de entornos
 
@@ -27,9 +27,9 @@ docker run --rm --name iasc-practica-ruby-cont -it iasc-practica-ruby -p 9292:92
 docker exec -it iasc-practica-ruby-cont bash -l
 # Para ver las versiones de ruby instaladas
 rvm list
-# Para usar Ruby 3.2.2 (mri es un alias)
+# Para usar Ruby 3.4.0 (mri es un alias)
 rvm use mri
-# Para usar JRuby 9.3.1.0 (jruby es un alias)
+# Para usar JRuby 10.0.2.0 (jruby es un alias)
 rvm use jruby
 # Levantar el servidor (-t {minThreads}:{maxThreads} -w {workers})
 bundle exec puma -t 4:8 -w 2
@@ -96,16 +96,16 @@ echo "source $HOME/.rvm/scripts/rvm" >> ~/.bash_profile
 Y luego, instalar Ruby y [bundler](http://bundler.io/):
 
 ```bash
-rvm install 3.3.0
-rvm use 3.3.0
+rvm install 3.4.0
+rvm use 3.4.0
 gem install bundler
 ```
 
-Instalar tambien jruby 9.3.1.0:
+Instalar tambien jruby (Java 21+ es requerido):
 
 ```bash
 rvm get head
-rvm install jruby-9.2.1.0
+rvm install jruby-10.0.2.0
 gem install bundler
 ```
 

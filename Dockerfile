@@ -1,11 +1,11 @@
 FROM ghcr.io/arquitecturas-concurrentes/iasc-rvm-debian-slim:main
 
 # preinstall some ruby versions
-ENV REQUIRED_RUBIES "3.3.0 jruby-9.3.1.0"
+ENV REQUIRED_RUBIES "3.4.0 jruby-10.0.2.0"
 RUN /bin/bash -l -c 'for version in $REQUIRED_RUBIES; do echo "Now installing Ruby $version"; rvm install $version; rvm cleanup all; done'
 
-RUN /bin/bash -l -c 'rvm alias create mri ruby-3.3.0'
-RUN /bin/bash -l -c 'rvm alias create jruby jruby-9.3.1.0'
+RUN /bin/bash -l -c 'rvm alias create mri ruby-3.4.0'
+RUN /bin/bash -l -c 'rvm alias create jruby jruby-10.0.2.0'
 
 # /app will have the puma practice
 RUN mkdir /app

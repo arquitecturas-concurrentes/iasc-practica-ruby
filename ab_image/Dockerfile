@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-ENV TERM linux
+ENV TERM=linux
 RUN apk --no-cache add apache2-utils vim
 RUN apk add --update bash && rm -rf /var/cache/apk/*
 
