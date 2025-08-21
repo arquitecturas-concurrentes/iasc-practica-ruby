@@ -185,6 +185,10 @@ A partir de las mediciones y comparaciones en cada escenario, deberían poder re
 
 ### FAQ
 
+#### ¿Donde esta la doc de Puma?
+
+https://github.com/puma/puma?tab=readme-ov-file#puma-a-ruby-web-server-built-for-parallelism
+
 #### ¿Cómo lanzar el servidor?
 
 Simplemente hay que ejecutar el comando `puma` mediante `bundle exec`:
