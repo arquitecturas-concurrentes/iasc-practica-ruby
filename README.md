@@ -46,7 +46,7 @@ Tambien puede usarse la configuracion de docker compose que viene con este repos
 para esto basta con levantar docker compose
 
 ```bash
-docker-compose up
+docker compose up
 ```
 
 Debido a que en la practica estaremos levantando seguido el servidor, cambiando los argumentos o el codigo, el directorio donde se monta la aplicacion es un volumen, con lo cual los cambios hechos se persisten hasta que se vuelva a recrear el volumen.
