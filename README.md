@@ -258,8 +258,8 @@ end
 Las instrucciones anteriores corren este servidor con Ruby estándar (MRI, también llamado YARV). Para ejecutarlo con JRuby, es necesario cambiar el intérprete a mano e instalar bundler :
 
 ```
-rvm use jruby-9.2.8.0
-gem install bundler
+rvm use jruby-10.0.2.0
+./clean_n_build.bash
 ```
 
 y luego ejecutar `puma` normalmente.
@@ -273,3 +273,11 @@ Tenés que
 - luego `bundle install`
 
 Y eso es todo.
+
+#### El endpoint de io_bound lanza un error. ¿ Que debo hacer?
+
+Seguramente este faltando el `blob.bin` que hay que generar previamenete con el script de `generate_file.bash`
+
+```bash
+./generate_file.bash
+```
